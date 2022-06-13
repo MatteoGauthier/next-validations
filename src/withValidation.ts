@@ -36,7 +36,7 @@ export function withValidation({
 
         res.status(404).end();
       } catch (error) {
-        res.status(400).send(error);
+        process.env.API_VALIDATION ? res.status(400).send(error) : res.status(404).end()
       }
     };
   };
